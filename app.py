@@ -1,22 +1,25 @@
-from flask import Flask, render_template
-from flask_socketio import SocketIO, emit
-from utils.bot import bot_response
+from flask import Flask, render_template, request, jsonify
+import random
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'furia_chat_secret'
-socketio = SocketIO(app)
+
+respostas = {
+    "oi": "Fala, FURIOSO! 👊 Pronto pra torcer com a gente?",
+    "quando é o próximo jogo": "Nosso próximo confronto é amanhã, às 20h, contra a Natus Vincere! 🖤💛",
+    "quem é o time titular": "Atualmente estamos com: arT, KSCERATO, yuurih, chelo e FalleN. Lenda reconhece lenda. 🔥",
+    "ranking": "Estamos atualmente no top 10 mundial! #RunFURIA",
+    "default": "Desculpa, não entendi. Tente perguntar sobre jogos, lineup ou ranking. 😉"
+}
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template("index.html")
 
-@socketio.on('message')
-def handle_message(msg):
-    print(f"Mensagem recebida: {msg}")
-    emit('message', {'user': 'Você', 'text': msg}, broadcast=True)
-    
-    response = bot_response(msg)
-    emit('message', {'user': 'FURIA Bot', 'text': response}, broadcast=True)
+@app.route('/responder', methods=['POST'])
+def responder():
+    pergunta = request.json.get("mensagem", "").lower()
+    resposta = respostas.get(pergunta, respostas["default"])
+    return jsonify({"resposta": resposta})
 
-if __name__ == '__main__':
-    socketio.run(app, debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)
