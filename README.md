@@ -1,68 +1,45 @@
-# 🔥 Chat FURIA - Desafio Engenharia de Software
+Chat Interativo FURIA Fan Chat
+📌 Descrição
+Este é um chatbot web inspirado no universo da FURIA Esports. Criado como parte de um desafio técnico, o projeto simula uma conversa com um fã da FURIA, fornecendo informações sobre o time, partidas e lineup. A proposta foi aprimorada com base em feedbacks, com foco em engajamento, identidade visual, interatividade e criatividade.
 
-Este projeto foi desenvolvido como parte do **Desafio Conversacional FURIA**, para a vaga de **Assistente de Engenharia de Software**. A proposta é criar uma experiência conversacional para fãs do time de CS da FURIA, que permita interações em tempo real com elementos informativos e divertidos.
+🚀 Funcionalidades
+Chat em tempo real entre usuário e bot
 
----
+Respostas customizadas sobre lineup, jogos e rankings
 
-## 🚀 Tecnologias Utilizadas
+Interface estilizada com identidade visual da FURIA
 
-- **Python 3.11**
-- **Flask**
-- **Flask-SocketIO**
-- **HTML5 + CSS3 + JavaScript**
-- **WebSocket** para comunicação em tempo real
+Layout responsivo e acessível
 
----
+Animações leves e scroll automático
 
-## 🧠 Funcionalidades
+Base para expansão com IA ou APIs
 
-- Chat web com mensagens em tempo real
-- Bot que responde perguntas sobre o time, placares e jogadores
-- Visual temático inspirado na identidade da FURIA
-- Código modular com possibilidade de expansão futura
+🛠️ Tecnologias Utilizadas
+Python 3.10+
 
----
+Flask
 
-## 🖥️ Como Executar Localmente
+HTML + CSS + JavaScript
 
-1. Clone o repositório: https://github.com/waltersalles/furia-chat-projeto1.git
+Identidade visual inspirada no site oficial da FURIA
 
-```bash
-git clone 
+🔧 Como Rodar Localmente
+Clone o repositório:
+
+git clone https://github.com/seu-usuario/furia-chat.git
 cd furia-chat
+Instale as dependências:
 
-2. Crie um ambiente virtual:
-python -m venv venv
-source venv/bin/activate   # No Windows: venv\Scripts\activate
+pip install flask
+Inicie o servidor:
 
-3.Instale as dependências:
-pip install -r requirements.txt
-
-4.Execute a aplicação:
 python app.py
+Acesse no navegador:
+http://127.0.0.1:5000
+Adicione um print aqui do chatbot em funcionamento (ex: docs/chat-preview.png).
 
-5.Acesse no navegador:
-http://localhost:5000
 
-💡 Próximas Melhorias
-Integração com APIs de partidas e estatísticas (HLTV, Liquipedia)
-
-Reações animadas da torcida (emojis, efeitos sonoros)
-
-Notificações de jogos ao vivo
-
-Versões para Telegram e mobile
-
-Sistema de autenticação para fãs com apelidos personalizados
-
-👨‍💻 Sobre o Desenvolvedor
-Desenvolvido por Walter Salles
-🎓 Estudante de Análise e Desenvolvimento de Sistemas
-💻 Apaixonado por tecnologia, esportes eletrônicos e experiências digitais
-🧠 Buscando sempre unir criatividade e código para entregar soluções funcionais
-🎯 Objetivo: contribuir com a FURIA desenvolvendo produtos que conectam fãs e inovação
-
-🖤 Vai FURIA!
 
 
 
