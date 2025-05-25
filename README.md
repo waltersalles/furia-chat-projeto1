@@ -27,7 +27,7 @@ Identidade visual inspirada no site oficial da FURIA
 🔧 Como Rodar Localmente
 Clone o repositório:
 
-git clone https://github.com/seu-usuario/furia-chat.git
+git clone (https://github.com/waltersalles/furia-chat-projeto1)
 cd furia-chat
 Instale as dependências:
 
