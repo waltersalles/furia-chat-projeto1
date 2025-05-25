@@ -1,42 +1,36 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Chat FURIA</title>
-  <link rel="stylesheet" href="/static/style.css">
-  <script src="https://cdn.socket.io/4.4.1/socket.io.min.js"></script>
+    <meta charset="UTF-8">
+    <title>FURIA Fan Chat</title>
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-  <div id="chat">
-    <h1>🔥 Chat FURIA 🔥</h1>
-    <div id="messages"></div>
-    <input id="input" autocomplete="off" placeholder="Digite sua mensagem..." />
-    <button onclick="sendMessage()">Enviar</button>
-  </div>
+    <div class="container">
+        <h1>🔥 FURIA Fan Chat</h1>
+        <div id="chatbox"></div>
+        <input type="text" id="input" placeholder="Pergunte algo..." autofocus>
+        <button onclick="enviar()">Enviar</button>
+    </div>
+    <script>
+        function enviar() {
+            const input = document.getElementById("input");
+            const msg = input.value;
+            if (!msg) return;
 
-  <script>
-    const socket = io();
-    const input = document.getElementById("input");
-    const messages = document.getElementById("messages");
+            const chatbox = document.getElementById("chatbox");
+            chatbox.innerHTML += `<div class='user'>${msg}</div>`;
+            input.value = "";
 
-    socket.on('message', data => {
-      const msg = document.createElement('div');
-      msg.textContent = `${data.user}: ${data.text}`;
-      messages.appendChild(msg);
-      messages.scrollTop = messages.scrollHeight;
-    });
-
-    function sendMessage() {
-      const text = input.value;
-      if (text.trim() !== "") {
-        socket.send(text);
-        input.value = "";
-      }
-    }
-
-    input.addEventListener("keypress", function (e) {
-      if (e.key === "Enter") sendMessage();
-    });
-  </script>
+            fetch("/responder", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({mensagem: msg})
+            }).then(res => res.json()).then(data => {
+                chatbox.innerHTML += `<div class='bot'>${data.resposta}</div>`;
+                chatbox.scrollTop = chatbox.scrollHeight;
+            });
+        }
+    </script>
 </body>
 </html>
